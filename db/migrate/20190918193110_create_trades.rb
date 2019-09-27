@@ -1,8 +1,6 @@
 class CreateTrades < ActiveRecord::Migration[5.2]
   def change
     create_table :trades do |t|
-      t.integer :requester_id
-      t.integer :accepter_id
       t.integer :requester_item
       t.integer :acceptor_item
       t.string :status
