@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   post '/login', to: "auth#login"
   get '/autologin', to: "auth#autologin"
   patch "/accept/:id", to: "trades#acceptOffer"
