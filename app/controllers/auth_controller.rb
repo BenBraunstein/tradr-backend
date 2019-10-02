@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
   def login
-    user = User.find_by(username: params[:username])
+    user = User.find_by('lower(username) = ?', params[:username].downcase)
     users_pending_trades = Trade.where(status: "pending").select { |trade| trade.acceptor_id == user.id || trade.requester_id == user.id }
     if user && user.authenticate(params[:password])
       render json: {
