@@ -5,7 +5,7 @@ class TradesController < ApplicationController
   end
 
   def create
-    trade = Trade.create(strong_trade_params)
+    trade = Trade.find_or_create_by(strong_trade_params)
     trade.update(requester_id: Item.find(trade.requester_item).user_id, acceptor_id: Item.find(trade.acceptor_item).user_id)
 
     # Twilio API
